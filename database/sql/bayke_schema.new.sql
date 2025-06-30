@@ -4,6 +4,8 @@
 
 -- DROP TABLE public."cache";
 
+DROP TABLE IF EXISTS public."cache" CASCADE;
+
 CREATE TABLE public."cache" (
 	"key" varchar(255) NOT NULL,
 	value text NOT NULL,
@@ -18,6 +20,8 @@ CREATE TABLE public."cache" (
 
 -- DROP TABLE public.cache_locks;
 
+DROP TABLE IF EXISTS public.cache_locks CASCADE;
+
 CREATE TABLE public.cache_locks (
 	"key" varchar(255) NOT NULL,
 	"owner" varchar(255) NOT NULL,
@@ -31,6 +35,8 @@ CREATE TABLE public.cache_locks (
 -- Drop table
 
 -- DROP TABLE public.delivery_packages;
+
+DROP TABLE IF EXISTS public.delivery_packages CASCADE;
 
 CREATE TABLE public.delivery_packages (
 	id bigserial NOT NULL,
@@ -99,6 +105,8 @@ CREATE INDEX delivery_packages_transfer_id_index ON public.delivery_packages USI
 
 -- DROP TABLE public.device_logs;
 
+DROP TABLE IF EXISTS public.device_logs CASCADE;
+
 CREATE TABLE public.device_logs (
 	id bigserial NOT NULL,
 	"type" varchar(255) NOT NULL,
@@ -117,6 +125,8 @@ CREATE TABLE public.device_logs (
 -- Drop table
 
 -- DROP TABLE public.drivers;
+
+DROP TABLE IF EXISTS public.drivers CASCADE;
 
 CREATE TABLE public.drivers (
 	id bigserial NOT NULL,
@@ -140,6 +150,8 @@ CREATE TABLE public.drivers (
 
 -- DROP TABLE public.employees;
 
+DROP TABLE IF EXISTS public.employees CASCADE;
+
 CREATE TABLE public.employees (
 	id bigserial NOT NULL,
 	facility_id int8 NULL,
@@ -161,6 +173,8 @@ CREATE INDEX employees_metrc_id_index ON public.employees USING btree (metrc_id)
 
 -- DROP TABLE public.failed_jobs;
 
+DROP TABLE IF EXISTS public.failed_jobs CASCADE;
+
 CREATE TABLE public.failed_jobs (
 	id bigserial NOT NULL,
 	"uuid" varchar(255) NOT NULL,
@@ -180,6 +194,8 @@ CREATE TABLE public.failed_jobs (
 
 -- DROP TABLE public.gateway_logs;
 
+DROP TABLE IF EXISTS public.gateway_logs CASCADE;
+
 CREATE TABLE public.gateway_logs (
 	id bigserial NOT NULL,
 	"type" varchar(255) NOT NULL,
@@ -198,6 +214,8 @@ CREATE TABLE public.gateway_logs (
 -- Drop table
 
 -- DROP TABLE public.harvests;
+
+DROP TABLE IF EXISTS public.harvests CASCADE;
 
 CREATE TABLE public.harvests (
 	id bigserial NOT NULL,
@@ -246,6 +264,8 @@ CREATE INDEX harvests_metrc_id_index ON public.harvests USING btree (metrc_id);
 -- Drop table
 
 -- DROP TABLE public.items;
+
+DROP TABLE IF EXISTS public.items CASCADE;
 
 CREATE TABLE public.items (
 	id bigserial NOT NULL,
@@ -312,6 +332,8 @@ CREATE INDEX items_metrc_id_index ON public.items USING btree (metrc_id);
 
 -- DROP TABLE public.job_batches;
 
+DROP TABLE IF EXISTS public.job_batches CASCADE;
+
 CREATE TABLE public.job_batches (
 	id varchar(255) NOT NULL,
 	"name" varchar(255) NOT NULL,
@@ -333,6 +355,8 @@ CREATE TABLE public.job_batches (
 
 -- DROP TABLE public.jobs;
 
+DROP TABLE IF EXISTS public.jobs CASCADE;
+
 CREATE TABLE public.jobs (
 	id bigserial NOT NULL,
 	queue varchar(255) NOT NULL,
@@ -351,6 +375,8 @@ CREATE INDEX jobs_queue_index ON public.jobs USING btree (queue);
 -- Drop table
 
 -- DROP TABLE public.license_types;
+
+DROP TABLE IF EXISTS public.license_types CASCADE;
 
 CREATE TABLE public.license_types (
 	id bigserial NOT NULL,
@@ -371,6 +397,8 @@ CREATE TABLE public.license_types (
 -- Drop table
 
 -- DROP TABLE public.metrc_api_request_logs;
+
+DROP TABLE IF EXISTS public.metrc_api_request_logs CASCADE;
 
 CREATE TABLE public.metrc_api_request_logs (
 	id bigserial NOT NULL,
@@ -399,6 +427,8 @@ CREATE INDEX metrc_api_request_logs_user_id_api_user_key_api_vendor_key_lice ON 
 
 -- DROP TABLE public.migrations;
 
+DROP TABLE IF EXISTS public.migrations CASCADE;
+
 CREATE TABLE public.migrations (
 	id serial4 NOT NULL,
 	migration varchar(255) NOT NULL,
@@ -412,6 +442,8 @@ CREATE TABLE public.migrations (
 -- Drop table
 
 -- DROP TABLE public.oauth_access_tokens;
+
+DROP TABLE IF EXISTS public.oauth_access_tokens CASCADE;
 
 CREATE TABLE public.oauth_access_tokens (
 	id varchar(100) NOT NULL,
@@ -434,6 +466,8 @@ CREATE INDEX oauth_access_tokens_user_id_index ON public.oauth_access_tokens USI
 
 -- DROP TABLE public.oauth_auth_codes;
 
+DROP TABLE IF EXISTS public.oauth_auth_codes CASCADE;
+
 CREATE TABLE public.oauth_auth_codes (
 	id varchar(100) NOT NULL,
 	user_id int8 NOT NULL,
@@ -451,6 +485,8 @@ CREATE INDEX oauth_auth_codes_user_id_index ON public.oauth_auth_codes USING btr
 -- Drop table
 
 -- DROP TABLE public.oauth_clients;
+
+DROP TABLE IF EXISTS public.oauth_clients CASCADE;
 
 CREATE TABLE public.oauth_clients (
 	id bigserial NOT NULL,
@@ -475,6 +511,8 @@ CREATE INDEX oauth_clients_user_id_index ON public.oauth_clients USING btree (us
 
 -- DROP TABLE public.oauth_personal_access_clients;
 
+DROP TABLE IF EXISTS public.oauth_personal_access_clients CASCADE;
+
 CREATE TABLE public.oauth_personal_access_clients (
 	id bigserial NOT NULL,
 	client_id int8 NOT NULL,
@@ -489,6 +527,8 @@ CREATE TABLE public.oauth_personal_access_clients (
 -- Drop table
 
 -- DROP TABLE public.oauth_refresh_tokens;
+
+DROP TABLE IF EXISTS public.oauth_refresh_tokens CASCADE;
 
 CREATE TABLE public.oauth_refresh_tokens (
 	id varchar(100) NOT NULL,
@@ -505,6 +545,8 @@ CREATE INDEX oauth_refresh_tokens_access_token_id_index ON public.oauth_refresh_
 -- Drop table
 
 -- DROP TABLE public.packages;
+
+DROP TABLE IF EXISTS public.packages CASCADE;
 
 CREATE TABLE public.packages (
 	id bigserial NOT NULL,
@@ -576,6 +618,8 @@ CREATE INDEX packages_metrc_id_index ON public.packages USING btree (metrc_id);
 
 -- DROP TABLE public.password_reset_tokens;
 
+DROP TABLE IF EXISTS public.password_reset_tokens CASCADE;
+
 CREATE TABLE public.password_reset_tokens (
 	email varchar(255) NOT NULL,
 	"token" varchar(255) NOT NULL,
@@ -589,6 +633,8 @@ CREATE TABLE public.password_reset_tokens (
 -- Drop table
 
 -- DROP TABLE public.personal_access_tokens;
+
+DROP TABLE IF EXISTS public.personal_access_tokens CASCADE;
 
 CREATE TABLE public.personal_access_tokens (
 	id bigserial NOT NULL,
@@ -613,6 +659,8 @@ CREATE INDEX personal_access_tokens_tokenable_type_tokenable_id_index ON public.
 
 -- DROP TABLE public.plant_waste_methods;
 
+DROP TABLE IF EXISTS public.plant_waste_methods CASCADE;
+
 CREATE TABLE public.plant_waste_methods (
 	id bigserial NOT NULL,
 	facility_id int8 NULL,
@@ -636,6 +684,8 @@ CREATE INDEX plant_waste_methods_metrc_id_index ON public.plant_waste_methods US
 -- Drop table
 
 -- DROP TABLE public.plant_waste_reasons;
+
+DROP TABLE IF EXISTS public.plant_waste_reasons CASCADE;
 
 CREATE TABLE public.plant_waste_reasons (
 	id bigserial NOT NULL,
@@ -662,6 +712,8 @@ CREATE INDEX plant_waste_reasons_metrc_id_index ON public.plant_waste_reasons US
 
 -- DROP TABLE public.processing_weight_record_package_tags;
 
+DROP TABLE IF EXISTS public.processing_weight_record_package_tags CASCADE;
+
 CREATE TABLE public.processing_weight_record_package_tags (
 	id bigserial NOT NULL,
 	processing_weight_record_id int8 NOT NULL,
@@ -680,6 +732,8 @@ CREATE TABLE public.processing_weight_record_package_tags (
 
 -- DROP TABLE public.roles;
 
+DROP TABLE IF EXISTS public.roles CASCADE;
+
 CREATE TABLE public.roles (
 	id bigserial NOT NULL,
 	"name" varchar(255) NOT NULL,
@@ -696,6 +750,8 @@ CREATE TABLE public.roles (
 -- Drop table
 
 -- DROP TABLE public.sessions;
+
+DROP TABLE IF EXISTS public.sessions CASCADE;
 
 CREATE TABLE public.sessions (
 	id varchar(255) NOT NULL,
@@ -716,6 +772,8 @@ CREATE INDEX sessions_user_id_index ON public.sessions USING btree (user_id);
 
 -- DROP TABLE public.statuses;
 
+DROP TABLE IF EXISTS public.statuses CASCADE;
+
 CREATE TABLE public.statuses (
 	id bigserial NOT NULL,
 	"name" varchar(255) NOT NULL,
@@ -732,6 +790,8 @@ CREATE TABLE public.statuses (
 -- Drop table
 
 -- DROP TABLE public.tags;
+
+DROP TABLE IF EXISTS public.tags CASCADE;
 
 CREATE TABLE public.tags (
 	id bigserial NOT NULL,
@@ -761,6 +821,8 @@ CREATE INDEX tags_metrc_id_index ON public.tags USING btree (metrc_id);
 
 -- DROP TABLE public.telescope_entries;
 
+DROP TABLE IF EXISTS public.telescope_entries CASCADE;
+
 CREATE TABLE public.telescope_entries (
 	"sequence" bigserial NOT NULL,
 	"uuid" uuid NOT NULL,
@@ -785,6 +847,8 @@ CREATE INDEX telescope_entries_type_should_display_on_index_index ON public.tele
 
 -- DROP TABLE public.telescope_monitoring;
 
+DROP TABLE IF EXISTS public.telescope_monitoring CASCADE;
+
 CREATE TABLE public.telescope_monitoring (
 	tag varchar(255) NOT NULL
 );
@@ -795,6 +859,8 @@ CREATE TABLE public.telescope_monitoring (
 -- Drop table
 
 -- DROP TABLE public.transfers;
+
+DROP TABLE IF EXISTS public.transfers CASCADE;
 
 CREATE TABLE public.transfers (
 	id bigserial NOT NULL,
@@ -860,6 +926,8 @@ CREATE INDEX transfers_status_id_index ON public.transfers USING btree (status_i
 
 -- DROP TABLE public.unassigned_facilities;
 
+DROP TABLE IF EXISTS public.unassigned_facilities CASCADE;
+
 CREATE TABLE public.unassigned_facilities (
 	id bigserial NOT NULL,
 	record_id int8 NOT NULL,
@@ -903,6 +971,8 @@ CREATE TABLE public.unassigned_facilities (
 
 -- DROP TABLE public.users;
 
+DROP TABLE IF EXISTS public.users CASCADE;
+
 CREATE TABLE public.users (
 	id bigserial NOT NULL,
 	"name" varchar(255) NOT NULL,
@@ -927,6 +997,8 @@ CREATE TABLE public.users (
 
 -- DROP TABLE public.vehicles;
 
+DROP TABLE IF EXISTS public.vehicles CASCADE;
+
 CREATE TABLE public.vehicles (
 	id bigserial NOT NULL,
 	metrc_id int8 NULL,
@@ -948,6 +1020,8 @@ CREATE TABLE public.vehicles (
 -- Drop table
 
 -- DROP TABLE public.weight_record_batches;
+
+DROP TABLE IF EXISTS public.weight_record_batches CASCADE;
 
 CREATE TABLE public.weight_record_batches (
 	id bigserial NOT NULL,
@@ -988,6 +1062,8 @@ CREATE INDEX weight_record_batches_strain_name_index ON public.weight_record_bat
 
 -- DROP TABLE public.chain_of_custodies;
 
+DROP TABLE IF EXISTS public.chain_of_custodies CASCADE;
+
 CREATE TABLE public.chain_of_custodies (
 	id bigserial NOT NULL,
 	user_id int8 NOT NULL,
@@ -1013,6 +1089,8 @@ CREATE INDEX chain_of_custodies_type_index ON public.chain_of_custodies USING bt
 
 -- DROP TABLE public.clients;
 
+DROP TABLE IF EXISTS public.clients CASCADE;
+
 CREATE TABLE public.clients (
 	id bigserial NOT NULL,
 	user_id int8 NOT NULL,
@@ -1035,6 +1113,8 @@ CREATE TABLE public.clients (
 -- Drop table
 
 -- DROP TABLE public.companies;
+
+DROP TABLE IF EXISTS public.companies CASCADE;
 
 CREATE TABLE public.companies (
 	id bigserial NOT NULL,
@@ -1061,6 +1141,8 @@ CREATE TABLE public.companies (
 
 -- DROP TABLE public.employee_licenses;
 
+DROP TABLE IF EXISTS public.employee_licenses CASCADE;
+
 CREATE TABLE public.employee_licenses (
 	id bigserial NOT NULL,
 	employee_id int8 NOT NULL,
@@ -1082,6 +1164,8 @@ CREATE TABLE public.employee_licenses (
 
 -- DROP TABLE public.operations;
 
+DROP TABLE IF EXISTS public.operations CASCADE;
+
 CREATE TABLE public.operations (
 	id bigserial NOT NULL,
 	client_id int8 NOT NULL,
@@ -1101,6 +1185,8 @@ CREATE TABLE public.operations (
 -- Drop table
 
 -- DROP TABLE public.package_items;
+
+DROP TABLE IF EXISTS public.package_items CASCADE;
 
 CREATE TABLE public.package_items (
 	id bigserial NOT NULL,
@@ -1162,6 +1248,8 @@ CREATE INDEX package_items_metrc_id_index ON public.package_items USING btree (m
 
 -- DROP TABLE public.people;
 
+DROP TABLE IF EXISTS public.people CASCADE;
+
 CREATE TABLE public.people (
 	id bigserial NOT NULL,
 	user_id int8 NOT NULL,
@@ -1187,6 +1275,8 @@ CREATE TABLE public.people (
 
 -- DROP TABLE public.telescope_entries_tags;
 
+DROP TABLE IF EXISTS public.telescope_entries_tags CASCADE;
+
 CREATE TABLE public.telescope_entries_tags (
 	entry_uuid uuid NOT NULL,
 	tag varchar(255) NOT NULL,
@@ -1201,6 +1291,8 @@ CREATE INDEX telescope_entries_tags_tag_index ON public.telescope_entries_tags U
 -- Drop table
 
 -- DROP TABLE public.user_actions;
+
+DROP TABLE IF EXISTS public.user_actions CASCADE;
 
 CREATE TABLE public.user_actions (
 	id bigserial NOT NULL,
@@ -1224,6 +1316,8 @@ CREATE INDEX user_actions_action_index ON public.user_actions USING btree (actio
 -- Drop table
 
 -- DROP TABLE public.user_roles;
+
+DROP TABLE IF EXISTS public.user_roles CASCADE;
 
 CREATE TABLE public.user_roles (
 	id bigserial NOT NULL,
@@ -1249,6 +1343,8 @@ CREATE INDEX user_roles_operation_id_index ON public.user_roles USING btree (ope
 -- Drop table
 
 -- DROP TABLE public.client_operation_devices;
+
+DROP TABLE IF EXISTS public.client_operation_devices CASCADE;
 
 CREATE TABLE public.client_operation_devices (
 	id bigserial NOT NULL,
@@ -1279,6 +1375,8 @@ CREATE INDEX client_operation_devices_user_id_index ON public.client_operation_d
 -- Drop table
 
 -- DROP TABLE public.facilities;
+
+DROP TABLE IF EXISTS public.facilities CASCADE;
 
 CREATE TABLE public.facilities (
 	id bigserial NOT NULL,
@@ -1311,6 +1409,8 @@ CREATE INDEX facilities_license_type_id_index ON public.facilities USING btree (
 -- Drop table
 
 -- DROP TABLE public.facility_types;
+
+DROP TABLE IF EXISTS public.facility_types CASCADE;
 
 CREATE TABLE public.facility_types (
 	id bigserial NOT NULL,
@@ -1409,6 +1509,8 @@ CREATE TABLE public.facility_types (
 
 -- DROP TABLE public.item_categories;
 
+DROP TABLE IF EXISTS public.item_categories CASCADE;
+
 CREATE TABLE public.item_categories (
 	id bigserial NOT NULL,
 	facility_id int8 NULL,
@@ -1456,6 +1558,8 @@ CREATE INDEX item_categories_metrc_id_index ON public.item_categories USING btre
 
 -- DROP TABLE public.locations;
 
+DROP TABLE IF EXISTS public.locations CASCADE;
+
 CREATE TABLE public.locations (
 	id bigserial NOT NULL,
 	facility_id int8 NOT NULL,
@@ -1486,6 +1590,8 @@ CREATE INDEX locations_status_id_index ON public.locations USING btree (status_i
 -- Drop table
 
 -- DROP TABLE public.plants;
+
+DROP TABLE IF EXISTS public.plants CASCADE;
 
 CREATE TABLE public.plants (
 	id bigserial NOT NULL,
@@ -1535,6 +1641,8 @@ CREATE INDEX plants_status_id_index ON public.plants USING btree (status_id);
 
 -- DROP TABLE public.strains;
 
+DROP TABLE IF EXISTS public.strains CASCADE;
+
 CREATE TABLE public.strains (
 	id bigserial NOT NULL,
 	facility_id int8 NOT NULL,
@@ -1565,6 +1673,8 @@ CREATE INDEX strains_status_id_index ON public.strains USING btree (status_id);
 -- Drop table
 
 -- DROP TABLE public.weight_records;
+
+DROP TABLE IF EXISTS public.weight_records CASCADE;
 
 CREATE TABLE public.weight_records (
 	id bigserial NOT NULL,
@@ -1622,6 +1732,8 @@ CREATE INDEX weight_records_weight_record_batch_id_index ON public.weight_record
 
 -- DROP TABLE public.processing_weight_record_batches;
 
+DROP TABLE IF EXISTS public.processing_weight_record_batches CASCADE;
+
 CREATE TABLE public.processing_weight_record_batches (
 	id bigserial NOT NULL,
 	metrc_manifest varchar(255) NULL,
@@ -1668,6 +1780,8 @@ CREATE INDEX processing_weight_record_batches_harvest_batch_id_index ON public.p
 
 -- DROP TABLE public.processing_weight_records;
 
+DROP TABLE IF EXISTS public.processing_weight_records CASCADE;
+
 CREATE TABLE public.processing_weight_records (
 	id bigserial NOT NULL,
 	metrc_manifest varchar(255) NULL,
@@ -1712,6 +1826,8 @@ CREATE INDEX processing_weight_records_harvest_batch_id_index ON public.processi
 -- Drop table
 
 -- DROP TABLE public.weight_record_logs;
+
+DROP TABLE IF EXISTS public.weight_record_logs CASCADE;
 
 CREATE TABLE public.weight_record_logs (
 	id bigserial NOT NULL,
