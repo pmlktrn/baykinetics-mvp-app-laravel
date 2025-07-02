@@ -3,7 +3,7 @@ name: Laravel CI + Deploy to Forge
 on:
   push:
     branches:
-      - main  # or your target branch
+      - dev  # or your target branch
 
 jobs:
   test-and-deploy:
