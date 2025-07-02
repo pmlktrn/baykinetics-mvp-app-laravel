@@ -1,13 +1,27 @@
-name: Laravel CI/CD
+name: Laravel CI + Deploy to Forge
 
 on:
   push:
     branches:
-      - dev   # or 'development' if that's your deploy branch
+      - main  # or your target branch
 
 jobs:
-  deploy:
+  test-and-deploy:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: ${{ secrets.DB_DATABASE }}
+          POSTGRES_USER: ${{ secrets.DB_USERNAME }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
     - name: Checkout code
@@ -17,14 +31,32 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: 8.2
-        extensions: mbstring, bcmath, pdo, curl, openssl, tokenizer, xml
+        extensions: mbstring, bcmath, pdo, pdo_pgsql, pgsql, curl, xml
         tools: composer
 
-    - name: Install Composer dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest --no-interaction
+    - name: Install dependencies
+      run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
-    - name: Run Tests (Optional)
-      run: php artisan test
+    - name: Create .env.testing
+      run: |
+        echo "APP_ENV=testing" >> .env.testing
+        echo "APP_KEY=${{ secrets.APP_KEY }}" >> .env.testing
+        echo "DB_CONNECTION=${{ secrets.DB_CONNECTION }}" >> .env.testing
+        echo "DB_HOST=${{ secrets.DB_HOST }}" >> .env.testing
+        echo "DB_PORT=${{ secrets.DB_PORT }}" >> .env.testing
+        echo "DB_DATABASE=${{ secrets.DB_DATABASE }}" >> .env.testing
+        echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> .env.testing
+        echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env.testing
+
+    - name: Run Laravel Migrations
+      run: php artisan migrate --force
+
+    - name: Run Unit Tests
+      run: php artisan test --testsuite=Unit
+
+    - name: Run Feature Tests
+      run: php artisan test --testsuite=Feature
 
     - name: Trigger Laravel Forge Deploy
+      if: success()
       run: curl -X POST "${{ secrets.FORGE_DEPLOY_WEBHOOK }}"
