@@ -48,9 +48,6 @@ jobs:
         echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> .env.testing
         echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env.testing
 
-    - name: Run Laravel Migrations
-      run: php artisan migrate --force
-
     - name: Run Unit Tests
       run: php artisan test --testsuite=Unit
 
